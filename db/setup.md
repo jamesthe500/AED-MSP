@@ -8,6 +8,10 @@ Download mysql using home-brew:
 
     brew install mysql
 
+Start MySQL
+
+    mysql.server restart
+
 Login to myql:
     
     mysql -u root -p
