@@ -1,0 +1,13 @@
+html {
+	min-height: 100%;
+	height: 100%;
+	width: 100%;
+	-webkit-text-size-adjust: none; 
+}
+
+body {
+	overflow: hidden;
+	margin: 0;
+	height: 100%;
+	width: 100%;
+}
