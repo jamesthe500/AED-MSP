@@ -2,7 +2,7 @@
   "name": "aed-msp",
   "version": "1.0.0",
   "description": "AED Location Tool",
-  "main": "main.js",
+  "main": "lib/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/jamesthe500/AED-MSP#readme",
   "dependencies": {
+    "express": "4.13.4",
     "jquery": "^2.2.1",
-    "leaflet": "^0.7.7"
+    "leaflet": "^0.7.7",
+    "mysql": "2.10.2"
   }
 }
