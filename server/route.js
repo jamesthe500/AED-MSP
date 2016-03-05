@@ -4,7 +4,7 @@ var db = require('./db')
 
 function route (app) {
 
-	app.get('/devices?lat=.....&long=....', function (req, res) {
+	app.get('/devices', function (req, res) {
 
 		var lat = req.params.lat
 		var long = req.params.long
@@ -13,17 +13,36 @@ function route (app) {
 			1, 2, 4, 8, 16
 		]
 
+		var returned = []
+
 		radiusFactors.forEach(function (factor) {
-			// get the bound for this factor
+			if (returned.length >= 5) {
+				return
+			}
+
 			var bound = latLong.getBound({
 				lat: lat,
 				long: long
 			}, factor)
 
-			// make our SQL
+			var queryParts = [
+				"SELECT * FROM location",
+				"WHERE latitude < " + bound.latUpper,
+				"AND latitude > " + bound.latLower,
+				"AND longitude > " + bound.longLower,
+				"AND longitude < " + bound.longUpper
+			]
 
-			// Query the db
-			// if number of returned < 5
+			var query = queryParts.join(' ') + ';'
+
+			db.query(query, function (err, rows, fields) {
+				if (err) return console.error(err)
+
+				if (rows.length > 0) {
+					returned.concat(rows)
+				}
+			})
+
 		})
 
 	})

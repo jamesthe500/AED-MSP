@@ -3,8 +3,27 @@ var mysql = require('mysql')
 
 function connect () {
 
-	return mysql.createConnection({
-		host: 'localhost'
+	var connection = mysql.createConnection({
+		host: 'localhost',
+		user: 'root',
+		password: '',
+		database: 'AED'
 	})
 
+	connection.connect()
+
+	return connection
+
+}
+
+function query (query, callback) {
+
+	var connection = connect()
+	conection.query(query, callback)
+	connection.end()
+
+}
+
+module.exports = {
+	query: query
 }
