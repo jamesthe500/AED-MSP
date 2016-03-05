@@ -6,8 +6,8 @@ function route (app) {
 
 	app.get('/devices', function (req, res) {
 
-		var lat = req.params.lat
-		var long = req.params.long
+		var lat = parseFloat(req.params.lat)
+		var long = parseFloat(req.params.long)
 
 		var radiusFactors = [
 			1, 2, 4, 8, 16
