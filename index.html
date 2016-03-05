@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html ng-app="aedLocator">
 <head>
 	<!-- Set Viewport for Mobile -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -19,19 +19,41 @@
 </head>
 
 <body>
-	
-	<!-- Closest AED -->
-	<div id='closest'>
-		<p id='closestDesc'></p>
-		<p id='closestDist'></p>
-		<div id='closestPic'></div>
+<div ng-controller="AedController">
+
+	<!-- main view on start -->
+	<div id='mainView' ng-view>
+
+		<!-- Closest AED -->
+		<div id='closest'>
+			<p id='closestDesc'></p>
+			<p id='closestDist'></p>
+			<div id='closestImg'></div>
+		</div>
+
+		<!-- Other Options -->
+		<div id='options'>
+			<div id='more'>See More AEDs</div>
+			<div id='add'>Add an AED</div>
+		</div>
 	</div>
 
-	<!-- Other Options -->
-	<div id='options'>
-		<div id='more'>See More AEDs</div>
-		<div id='add'>Add an AED</div>
+	<!-- add aed locate page -->
+	<div id='addView0' ng-view>
+		<p id='addLocTitle' class='addViewTitle'>Please locate the AED</p>
+		<div id='addLocMap'><div>
 	</div>
-	<script src='main.js'></script>
+
+	<!-- add aed confirmation page -->
+	<div id='addView1' ng-view>
+		<p id='addConTitle' class='addViewTitle'>Is this the AED you are locating?</p>
+		<div id='addConAed'>
+			<p id='addConDesc'></p>
+			<p id='addConImg'
+	</div>
+
+
+</div>
+<script src='main.js'></script>
 </body>
 </html>
