@@ -45,6 +45,8 @@ function route (app) {
 
 		})
 
+		res.send({ devices: returned })
+
 	})
 
 }
