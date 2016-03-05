@@ -2,10 +2,10 @@
   "name": "aed-msp",
   "version": "1.0.0",
   "description": "AED Location Tool",
-  "main": "lib/main.js",
+  "main": "server/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server/app.js"
+    "start": "node server/main.js"
   },
   "repository": {
     "type": "git",

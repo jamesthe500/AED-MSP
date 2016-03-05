@@ -19,7 +19,7 @@ function connect () {
 function query (query, callback) {
 
 	var connection = connect()
-	conection.query(query, callback)
+	connection.query(query, callback)
 	connection.end()
 
 }
