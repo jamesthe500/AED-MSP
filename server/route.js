@@ -27,10 +27,10 @@ function route (app) {
 
 			var queryParts = [
 				"SELECT * FROM location",
-				"WHERE latitude < " + bound.latUpper,
-				"AND latitude > " + bound.latLower,
-				"AND longitude > " + bound.longLower,
-				"AND longitude < " + bound.longUpper
+				"WHERE latitude <= " + bound.latUpper,
+				"AND latitude >= " + bound.latLower,
+				"AND longitude >= " + bound.longLower,
+				"AND longitude <= " + bound.longUpper
 			]
 
 			var query = queryParts.join(' ') + ';'
