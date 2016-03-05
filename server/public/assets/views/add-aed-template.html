@@ -1,0 +1,52 @@
+<!-- add aed locate page -->
+<div id='addView0' ng-view>
+  <p id='addLocTitle' class='addViewTitle'>Please locate the AED</p>
+  <div id='addLocMap'><div>
+</div>
+
+<!-- add aed confirmation page -->
+<div id='addView1' ng-view>
+  <p id='addConTitle' class='addViewTitle'>Is this the AED you are locating?</p>
+  <div id='addConAed'>
+    <p id='addConDesc'></p>
+    <div id='addConImg'><div>
+</div>
+
+<!-- add aed update page -->
+<div id='addView2' ng-view>
+  <p id='addUpdateDescText'></p>
+  <div id='addUpdateDescButton'></div>
+  <p id='addUpdatePhotoText'></p>
+  <div id='addUpdatePhotoButton'></div>
+  <p id='addUpdateTitle' class='addViewTitle'>Is there still an AED in this location?</p>
+  <div id='addUpdateButtons'>
+    <div id='addUpdateYes'>Yes</div>
+    <div id='addUpdateNo'>No</div>
+  </div>
+</div>
+
+<!-- add aed update photo page -->
+<div id='addView3' ng-ivew>
+  <p id='addUpdatePhotoText'>Take a photo</p>
+  <form id='addUpdatePhotoForm'>
+    <input id='addUpdatePhotoInput' type="file" accept="image/*;capture=camera">
+    <input type='submit' value='Submit Photo'>
+  </form>
+</div>
+
+<!-- add aed update description page -->
+<div id='addView4' ng-view>
+  <p id='addUpdateDescText'>Add a description</p>
+  <form id='addUpdateDescForm'>
+    Add a description
+    <textarea id='addUpdateDescInput' rows='4' cols='1' placeholder='useful information about description here'></textarea>
+    If visible, what is the expiration date?
+    <input id='addUpdateDateInput' type='date'>
+    <input type='submit' value='Submit Description'>
+  </form>
+</div>
+
+<!-- add aed thank you page -->
+<div id='addView5' ng-view>
+  <p id='addThanks'>Thank you!</p>
+</div>

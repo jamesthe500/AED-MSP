@@ -37,6 +37,15 @@ module.exports = function(grunt){
                 "dest": "server/public/assets/"
 
             },
+            index: {
+                expand: true,
+                cwd: 'client',
+                src: [
+                    "index.html"
+                ],
+                "dest": "server/public/"
+
+            },
             scripts: {
                 expand: true,
                 cwd: 'client',
@@ -50,6 +59,7 @@ module.exports = function(grunt){
                 cwd: "node_modules/",
                 src: [
                     "angular/angular.min.js",
+                    "angular-route/angular-route.min.js",
                     "angular/angular.min.js.map",
                     "angular/angular-csp.css"
                 ],
