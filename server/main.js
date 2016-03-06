@@ -1,11 +1,15 @@
 'use strict'
 
 let express = require('express')
+let bodyParser = require('body-parser')
 let path = require('path')
 let mysql = require('mysql')
 
 let app = express()
 let port = process.env.PORT || 7799
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 
 global.connectionPool = mysql.createPool({
 	connectionLimit: 10,

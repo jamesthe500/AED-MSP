@@ -30,11 +30,33 @@ locations.getByLatLong = function (lat, long) {
 				resolve(data.rows)
 			})
 			.catch((err) => {
-				console.error(err)
 				reject(err)
 			})
 	})
 
+}
+
+locations.createLocation = function (location) {
+
+	return new Promise(function (resolve, reject) {
+	var queryParts = [
+		"INSERT INTO location",
+		"(latitude, longitude)",
+		"VALUES (?, ?)"
+	]
+
+	var query = queryParts.join(' ') + ';'
+
+	var values = [ location.latitude, location.longitude ]
+
+	db.insert(query, values)
+		.then((data) => {
+			resolve(data)
+		})
+		.catch((err) => {
+			reject(err)
+		})
+	})
 }
 
 module.exports = locations
