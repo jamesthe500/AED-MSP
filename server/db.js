@@ -15,7 +15,8 @@ db.query = function (query) {
 }
 
 db.insert = function (query, values) {
-
+	console.log(query)
+	console.log(values)
 	return new Promise((resolve, reject) => {
 		global.connectionPool.query(query, values, (err, result) => {
 			if (err) return reject(err)
@@ -24,5 +25,7 @@ db.insert = function (query, values) {
 		})
 	})
 }
+
+db.update = db.insert
 
 module.exports = db

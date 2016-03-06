@@ -48,6 +48,17 @@ function locationsRoute (app) {
 
 	})
 
+	app.put('/locations', function(req, res) {
+		var aedDescription = req.body.description
+
+		aedDescriptions.updateDescription(aedDescription).then(function (descriptionResult) {
+			res.send({description: aedDescription})
+		})
+		.catch(function (err) {
+			res.status(500).send(err)
+		})
+	})
+
 }
 
 module.exports = locationsRoute
