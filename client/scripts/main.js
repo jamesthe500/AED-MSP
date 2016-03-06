@@ -18,7 +18,5 @@ aedLocatorApp.config(['$routeProvider', function($routeProvider){
 }]);
 
 aedLocatorApp.controller('AedController', ['$scope', function($scope) {
-
-
-
+  
 }]);
