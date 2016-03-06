@@ -9,7 +9,6 @@ aedDescriptions.createDescription = function (aedDescription) {
 
 	var expirationDate = _.has(aedDescription, 'expirationDate') ? aedDescription.expirationDate : ''
 
-
 	return new Promise(function (resolve, reject) {
 		var queryParts = [
 			"INSERT INTO aed_description",
