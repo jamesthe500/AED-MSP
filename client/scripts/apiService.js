@@ -4,7 +4,7 @@
   
   var app = angular.module("AedLocator");
   
-  app.factory("aedApi", ['$cacheFactory', '$http' function($cacheFactory, $http) {
+  app.factory("aedApi", ['$cacheFactory', '$http', function($cacheFactory, $http) {
     
     var api = {};
     
