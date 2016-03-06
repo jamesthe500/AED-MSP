@@ -2,6 +2,9 @@
   "name": "aed-msp",
   "version": "1.0.0",
   "description": "AED Location Tool",
+  "engines": {
+    "node": "5.7.1"
+  },
   "main": "server/main.js",
   "scripts": {
     "test": "mocha .",
