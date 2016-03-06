@@ -18,7 +18,7 @@
     };
     
     api.createAed = function(aedFormData) {
-      return $http.post('/locations', formData, {
+      return $http.post('/locations', aedFormData, {
         transformRequest: angular.identity,
         headers: { 'Content-Type' : undefined }
       });

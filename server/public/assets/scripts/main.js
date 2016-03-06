@@ -30,8 +30,11 @@ aedLocatorApp.controller('AedController', ['$scope', '$location', function($scop
 
 }]);
 
-aedLocatorApp.controller('AddViewController', ['$scope', '$location', function($scope, $location) {
-
+aedLocatorApp.controller('AddViewController', ['$scope', '$location', 'aedApi', function($scope, $location, aedApi) {
+    
+    // create aed object
+    var aed = { description : {}, location : {} };
+    
     $scope.addView0 = true;
     $scope.addView1 = false;
     $scope.addView2 = false;
@@ -55,11 +58,6 @@ aedLocatorApp.controller('AddViewController', ['$scope', '$location', function($
     $scope.switchView3 = function() {
       $scope.addView0 = !$scope.addView0;
       $scope.addView3 = !$scope.addView3;
-
-      var lat = userMarker._latlng.lat;
-      var lng = userMarker._latlng.lng;
-      aed.lat = lat;
-      aed.lng = lng
     }
 
     $scope.switchViewCancel4 = function() {
@@ -81,16 +79,23 @@ aedLocatorApp.controller('AddViewController', ['$scope', '$location', function($
       $scope.addView5 = !$scope.addView5;
 
       var desc = document.getElementById('addUpdateDescInput').value;
-      aed.desc = desc;
+      aed.description.description = desc;
       var exp = document.getElementById('addUpdateDateInput').value;
-      aed.exp = exp;
+      aed.description.expirationDate = exp;
       
-      console.log(aed)
+      
+      var fd = new FormData();
+      fd.append('description[description]', aed.description.description);
+      fd.append('description[expriationDate]', aed.description.expriationDate);
+      fd.append('location[latitude]', aed.location.latitude);
+      fd.append('location[longitude]', aed.location.description);
+      
+      console.log("Trying a POST!");
+      aedApi.createAed(fd).then(function(response) {
+        console.log("POST complete!");
+        console.log(response); 
+      });
     }
-
-    // create aed object
-
-    var aed = {}
     
     /* ************************* MAP LOCATION STUFF ********************************/
 
@@ -119,6 +124,10 @@ aedLocatorApp.controller('AddViewController', ['$scope', '$location', function($
       // add marker for location and circle for accuracy
       map.addLayer(userMarker);
       map.addLayer(circle);
+      
+      console.log(userLocation);
+      aed.location.latitude = userLocation.lat;
+      aed.location.longitude = userLocation.lng;
     }
 
     // handle geolocation errors
