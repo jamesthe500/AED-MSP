@@ -13,8 +13,8 @@ CREATE TABLE `location` (
 
  CREATE TABLE `aed_description` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `FilePath` varchar(256) NOT NULL,
-  `description` text NOT NULL,
+  `FilePath` varchar(256),
+  `description` text,
   `Reference_URL` varchar(256) DEFAULT NULL,
   `CreatedDate` datetime DEFAULT CURRENT_TIMESTAMP,
   `UpdatedDate` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
@@ -24,4 +24,3 @@ CREATE TABLE `location` (
   KEY `LocationId` (`LocationId`),
   CONSTRAINT `aed_description_ibfk_1` FOREIGN KEY (`LocationId`) REFERENCES `Location` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
