@@ -2,26 +2,23 @@
   
   var API_BASE_URL = '';
   
-  var app = angular.module("AedLocator");
+  var app = angular.module("aedLocatorApp");
   
-  app.factory("aedApi", ['$cacheFactory', '$http' function($cacheFactory, '$http') {
+  app.factory("aedApi", ['$cacheFactory', '$http', function($cacheFactory, $http) {
     
     var api = {};
     
     api.queryAeds = function(lat, lon) {
-      return $http.get('AED QUERY ENDPOINT').then(function(response) {
+      return $http.get('/locations?lat=' + lat + "&long=" + lon).then(function(response) {
         return response.data
+      }, function(error) {
+        console.log("error while querying api");
+        console.log(error);
       });
     };
     
-    api.createAed = function(aed) {
-      var formData = new FormData();
-      
-      for (key in aed) {
-        formData.append(key, aed[key])
-      }
-      
-      return $http.post('/locations', formData, {
+    api.createAed = function(aedFormData) {
+      return $http.post('/locations', aedFormData, {
         transformRequest: angular.identity,
         headers: { 'Content-Type' : undefined }
       });
