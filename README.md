@@ -36,3 +36,7 @@ Install pm2 (a node process manager) globally with `npm i -g pm2`. This will all
 # Heroku
 
 To deploy the application, create an account on [heroku](http://heroku.com). Configure your ssh key in Account Settings.
+
+Afterwards, add the heroku remote to your local git repo:
+
+`git remote add heroku https://git.heroku.com/aqueous-castle-24316.git`
