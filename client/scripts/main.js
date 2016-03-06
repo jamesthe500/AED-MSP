@@ -10,6 +10,9 @@ aedLocatorApp.config(['$routeProvider', function($routeProvider){
     when('/add-aed', {
       templateUrl: '/assets/views/add-aed-template.html'
     }).
+    when('/more-aed', {
+      templateUrl: '/assets/views/more-aed-template.html'
+    }).
     otherwise({
       redirectTo: '/'
     });
@@ -22,6 +25,7 @@ aedLocatorApp.controller('AedController', ['$scope', '$location', function($scop
     $scope.changeView = function(view) {
       $location.path(view);
     }
+
 
 
 }]);
@@ -144,62 +148,49 @@ aedLocatorApp.controller('AddViewController', ['$scope', '$location', 'aedApi', 
         map.removeLayer(circle);
       }
     });
-
-
-
-    // $scope.correctAedLocation = function(preExistingAed) {
-    //     $scope.addView0 = !$scope.addView0;
-    //     // TODO run a query here to find the closest AED again, in case the map has moved. Then it'll be View1 OR View4
-    //     if(preExistingAed){
-    //         $scope.addView1 = !$scope.addView1;
-    //     } else {
-    //         $scope.addView4 = !$scope.addView4;
-    //     }
-    // };
-    // $scope.thatWasTheSameAed = function() {
-    //     $scope.addView1 = !$scope.addView1;
-    //     $scope.addView2 = !$scope.addView2;
-    // };
-    // $scope.thatWasNotTheSameAed = function() {
-    //     // TODO bring up the next closest AED, until we run out of AEDs within 20m
-    //     $scope.addView1 = !$scope.addView1;
-    //     $scope.addView4 = !$scope.addView4;
-    // };
-    // $scope.updateAedDescription = function() {
-    //     $scope.addView2 = !$scope.addView2;
-    //     $scope.addView4 = !$scope.addView4;
-    // };
-    // $scope.confirmNearestAed = function() {
-    //     $scope.addView2 = !$scope.addView2;
-    //     $scope.addView5 = !$scope.addView5;
-    // };
-    // $scope.updateAedPhoto = function() {
-    //     $scope.addView2 = !$scope.addView2;
-    //     $scope.addView3 = !$scope.addView3;
-    // };
-    // $scope.setAedDescription = function() {
-    //     $scope.addView4 = !$scope.addView4;
-    //     $scope.addView3 = !$scope.addView3;
-    // };
-    // $scope.photoTaken = function() {
-    //     $scope.addView3 = !$scope.addView3;
-    //     $scope.addView5 = !$scope.addView5;
-    // };
-    // $scope.devStartOver = function() {
-    //     $scope.addView5 = !$scope.addView5;
-    //     $scope.addView0 = !$scope.addView0;
-    // };
-
-    // $scope.aedDescriptionData = function(){
-    //     $scope.newAedData.description.description = this.text;
-    //     $scope.newAedData.description.expirationDate = this.date;
-
-    //     console.log($scope.newAedData);
-    //     };
-
-
-  
 }]);
 
+aedLocatorApp.controller('MoreViewController', ['$scope', '$location', 'aedApi', function($scope, $location, aedApi) {
+
+
+
+   // initialize map
+    var map = L.map('map').setView([45,-93.25], 9);
+
+    // create basemap
+    var basemap = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    function locateUser(e) {
+
+      console.log('location found')
+
+      // gets latlng of locationfound event
+      userLocation = e.latlng;
+
+      console.log(userLocation)
+
+      aedApi.queryAeds(String(userLocation.lat), String(userLocation.lng)).then(function(response) {
+        console.log(response)
+        for (var i = 0; i < response.length; i++) {
+
+        }
+      });
+    }
+
+    // handle geolocation errors
+    function locateUserError(e) {
+      alert(e.message);
+    }
+
+    // run geolocation functions
+    map.on('locationfound', locateUser);
+    map.on('locationerror', locateUserError);
+    map.locate({setView: true});
+
+    
+
+}]);
 
 
