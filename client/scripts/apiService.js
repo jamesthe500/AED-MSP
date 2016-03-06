@@ -11,6 +11,9 @@
     api.queryAeds = function(lat, lon) {
       return $http.get('/locations?lat=' + lat + "&long=" + lon).then(function(response) {
         return response.data
+      }, function(error) {
+        console.log("error while querying api");
+        console.log(error);
       });
     };
     
