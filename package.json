@@ -5,7 +5,7 @@
   "main": "server/main.js",
   "scripts": {
     "test": "mocha .",
-    "start": "node server/main.js",
+    "start": "node --harmony server/main.js",
     "prod": "grunt && node server/main.js"
   },
   "repository": {
