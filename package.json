@@ -23,7 +23,8 @@
     "jquery": "^2.2.1",
     "leaflet": "^0.7.7",
     "mysql": "2.10.2",
-    "grunt-cli": "0.1.13"
+    "grunt-cli": "0.1.13",
+    "grunt": "0.4.5"
   },
   "devDependencies": {
     "chai": "3.5.0",
