@@ -2,21 +2,22 @@ var photos = {}
 
 var fs = require('fs')
 var uuid = require('node-uuid')
+var mime = require('mime')
 
 photos.uploadPhoto = function (){
   return function(req, res, next){
-    var photo = req.files.photo
+    var photo = req.file
 
-    fs.readFile(photo.path, function (err, data) {
+		var fileName = uuid.v4() + "." + mime.extension(photo.mimetype)
+    var newPath = __dirname + "/../../uploads/photos/" + fileName
 
-      var newPath = __dirname + "/../../uploads/photos/" + uuid.v4()
-      fs.writeFile(newPath, data, function (err) {
-        if (err){
-          console.error(err)
-        }
-        req.body.description.filePath = newPath
-        next()
-      })
+    fs.writeFile(newPath, photo.buffer, function (err) {
+      if (err){
+        console.error(err)
+      }
+			
+      req.body.description.filePath = fileName
+      next()
     })
   }
 }

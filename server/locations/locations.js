@@ -14,6 +14,7 @@ locations.getByLatLong = function (lat, long) {
 
 	return new Promise(function (resolve, reject) {
 		var bound = latLong.getBound({ lat, long }, 10)
+		console.log(bound)
 
 		var queryParts = [
 			"SELECT * FROM location l",
