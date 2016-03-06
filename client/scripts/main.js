@@ -86,7 +86,7 @@ aedLocatorApp.controller('AddViewController', ['$scope', '$location', 'aedApi', 
       
       var fd = new FormData();
       fd.append('description[description]', aed.description.description);
-      fd.append('description[expriationDate]', aed.description.expriationDate);
+      fd.append('description[expirationDate]', aed.description.expriationDate);
       fd.append('location[latitude]', aed.location.latitude);
       fd.append('location[longitude]', aed.location.description);
       
