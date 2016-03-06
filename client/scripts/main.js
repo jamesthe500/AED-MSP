@@ -149,7 +149,7 @@ aedLocatorApp.controller('AddViewController', ['$scope', '$location', 'aedApi', 
 
 aedLocatorApp.controller('MoreViewController', ['$scope', '$location', 'aedApi', function($scope, $location, aedApi) {
    // initialize map
-    var map2 = L.map('map').setView([45,-93.25], 9);
+    var map2 = L.map('map').setView([45,-93.25], 7);
 
     // create basemap
     var basemap2 = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
@@ -162,6 +162,10 @@ aedLocatorApp.controller('MoreViewController', ['$scope', '$location', 'aedApi',
 
       // gets latlng of locationfound event
       userLocation = e.latlng;
+
+      // variable for a user marker
+      userMarker = L.marker(userLocation);
+      map2.addLayer(userMarker);
 
       aedApi.queryAeds(String(userLocation.lat), String(userLocation.lng)).then(function(response) {
         console.log(response)
@@ -177,6 +181,8 @@ aedLocatorApp.controller('MoreViewController', ['$scope', '$location', 'aedApi',
           "</td></tr></table>");
           var aedMarker = L.marker([lat, lng]).bindPopup(aedPopup);
           map2.addLayer(aedMarker);
+
+
         }
       });
     }

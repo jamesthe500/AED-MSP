@@ -83,17 +83,15 @@ aedLocatorApp.controller('AddViewController', ['$scope', '$location', 'aedApi', 
       var exp = document.getElementById('addUpdateDateInput').value;
       aed.description.expirationDate = exp;
 
-
       var fd = new FormData();
       fd.append('description[description]', aed.description.description);
-      fd.append('description[expriationDate]', aed.description.expriationDate);
+      fd.append('description[expirationDate]', aed.description.expirationDate);
       fd.append('location[latitude]', aed.location.latitude);
-      fd.append('location[longitude]', aed.location.description);
 
-      console.log("Trying a POST!");
+      fd.append('location[longitude]', aed.location.longitude);
+
       aedApi.createAed(fd).then(function(response) {
-        console.log("POST complete!");
-        console.log(response);
+
       });
     }
 
@@ -125,7 +123,6 @@ aedLocatorApp.controller('AddViewController', ['$scope', '$location', 'aedApi', 
       map.addLayer(userMarker);
       map.addLayer(circle);
 
-      console.log(userLocation);
       aed.location.latitude = userLocation.lat;
       aed.location.longitude = userLocation.lng;
     }
@@ -152,7 +149,7 @@ aedLocatorApp.controller('AddViewController', ['$scope', '$location', 'aedApi', 
 
 aedLocatorApp.controller('MoreViewController', ['$scope', '$location', 'aedApi', function($scope, $location, aedApi) {
    // initialize map
-    var map2 = L.map('map').setView([45,-93.25], 9);
+    var map2 = L.map('map').setView([45,-93.25], 7);
 
     // create basemap
     var basemap2 = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
@@ -166,12 +163,15 @@ aedLocatorApp.controller('MoreViewController', ['$scope', '$location', 'aedApi',
       // gets latlng of locationfound event
       userLocation = e.latlng;
 
+      // variable for a user marker
+      userMarker = L.marker(userLocation);
+      map2.addLayer(userMarker);
 
       aedApi.queryAeds(String(userLocation.lat), String(userLocation.lng)).then(function(response) {
         console.log(response)
         for (var i = 0; i < response.locations.length; i++) {
           var desc = response.locations[i].description;
-          var exp = response.locations[i].ExpirationDate == null ? '' : response.locations[i].ExpirationDate;
+          var exp = response.locations[i].ExpirationDate == null ? 'N/A' : response.locations[i].ExpirationDate;
           var lat = parseFloat(response.locations[i].latitude);
           var lng = parseFloat(response.locations[i].longitude);
           var create = response.locations[i].UpdatedDate.slice(0,10);
@@ -181,6 +181,8 @@ aedLocatorApp.controller('MoreViewController', ['$scope', '$location', 'aedApi',
           "</td></tr></table>");
           var aedMarker = L.marker([lat, lng]).bindPopup(aedPopup);
           map2.addLayer(aedMarker);
+
+
         }
       });
     }
