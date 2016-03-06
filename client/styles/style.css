@@ -2,7 +2,7 @@ html {
 	min-height: 100%;
 	height: 100%;
 	width: 100%;
-	-webkit-text-size-adjust: none; 
+	-webkit-text-size-adjust: none;
 }
 
 body {
@@ -17,7 +17,7 @@ body {
 	position: relative;
 	margin-left: auto;
 	margin-right: auto;
-	width: 90%;
+	width: 80%;
 	margin-top: 1em;
 	border: 2px solid #545454;
 	-webkit-border-radius: 5px;
@@ -45,8 +45,8 @@ body {
 }
 
 #closestImg img {
-	height: 100%;
-	width: auto;
+	height: auto;
+	width: 100%;
 }
 
 #options {
