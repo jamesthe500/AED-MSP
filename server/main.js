@@ -6,7 +6,7 @@ var path = require('path')
 var route = require('./route')
 route(app)
 
-app.use("/", express.static(path.resolve(__dirname + "/public")))
+app.use('/', express.static(path.resolve(__dirname + '/public')))
 
 app.listen(7799, function (err) {
 	if (err) console.error(err)
