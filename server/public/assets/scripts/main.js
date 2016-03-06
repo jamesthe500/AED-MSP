@@ -26,6 +26,10 @@ aedLocatorApp.controller('AedController', ['$scope', function($scope) {
     $scope.addView4 = false;
     $scope.addView5 = false;
 
+    $scope.newAedData = {};
+    $scope.newAedData.description = {};
+    $scope.newAedData.location = {};
+
     $scope.correctAedLocation = function(preExistingAed) {
         $scope.addView0 = !$scope.addView0;
         // TODO run a query here to find the closest AED again, in case the map has moved. Then it'll be View1 OR View4
@@ -69,6 +73,12 @@ aedLocatorApp.controller('AedController', ['$scope', function($scope) {
         $scope.addView0 = !$scope.addView0;
     };
 
+    $scope.aedDescriptionData = function(){
+        $scope.newAedData.description.description = this.text;
+        $scope.newAedData.description.expirationDate = this.date;
+
+        console.log($scope.newAedData);
+        };
 
 
   

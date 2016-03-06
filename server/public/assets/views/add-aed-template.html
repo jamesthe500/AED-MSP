@@ -49,13 +49,13 @@
 <!-- add aed update description page -->
 <div id='addView4' ng-show="addView4">
     <p id='addUpdateDescText'>Add a description</p>
-    <!--<form id='addUpdateDescForm'>
+    <form id='addUpdateDescForm' ng-submit="aedDescriptionData()">
         Add a description
-        <textarea id='addUpdateDescInput' rows='4' cols='1' placeholder='useful information about description here'></textarea>
+        <textarea ng-model='text' id='addUpdateDescInput' rows='4' cols='1' placeholder='useful information about description here'></textarea>
         If visible, what is the expiration date?
-        <input id='addUpdateDateInput' type='date'>
+        <input id='addUpdateDateInput' ng-model="date" type='date'>
         <input type='submit' value='Submit Description'>
-    </form>-->
+    </form>
     <button ng-click="setAedDescription()">OK</button>
 
 </div>
