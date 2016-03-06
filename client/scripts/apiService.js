@@ -2,7 +2,7 @@
   
   var API_BASE_URL = '';
   
-  var app = angular.module("AedLocator");
+  var app = angular.module("aedLocatorApp");
   
   app.factory("aedApi", ['$cacheFactory', '$http', function($cacheFactory, $http) {
     
