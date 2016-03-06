@@ -135,7 +135,7 @@ aedLocatorApp.controller('AddViewController', ['$scope', '$location', 'aedApi', 
     // run geolocation functions
     map.on('locationfound', locateUser);
     map.on('locationerror', locateUserError);
-    map.locate({setView: true});
+    map.locate();
 
     // allow user to adjust location
     map.on('move', function(e) {
@@ -181,7 +181,10 @@ aedLocatorApp.controller('MoreViewController', ['$scope', '$location', 'aedApi',
           "</td></tr></table>");
           var aedMarker = L.marker([lat, lng]).bindPopup(aedPopup);
           map2.addLayer(aedMarker);
-
+          if (i == 0) {
+            var group = new L.featureGroup([aedMarker, userMarker]);
+            map2.fitBounds(group.getBounds());
+          }
 
         }
       });
