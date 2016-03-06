@@ -22,11 +22,11 @@
     "express": "4.13.4",
     "jquery": "^2.2.1",
     "leaflet": "^0.7.7",
-    "mysql": "2.10.2"
+    "mysql": "2.10.2",
+    "grunt-cli": "0.1.13"
   },
   "devDependencies": {
     "chai": "3.5.0",
-    "grunt": "^0.4.5",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-uglify": "^1.0.0",
     "mocha": "2.4.5"
