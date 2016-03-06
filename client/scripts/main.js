@@ -152,8 +152,6 @@ aedLocatorApp.controller('AddViewController', ['$scope', '$location', 'aedApi', 
 
 aedLocatorApp.controller('MoreViewController', ['$scope', '$location', 'aedApi', function($scope, $location, aedApi) {
 
-
-
    // initialize map
     var map = L.map('map').setView([45,-93.25], 9);
 
@@ -174,7 +172,13 @@ aedLocatorApp.controller('MoreViewController', ['$scope', '$location', 'aedApi',
       aedApi.queryAeds(String(userLocation.lat), String(userLocation.lng)).then(function(response) {
         console.log(response)
         for (var i = 0; i < response.length; i++) {
-
+          var desc = response[i].description.description;
+          var exp = response[i].description.expirationDate;
+          var lat = parseFloat(response[i].location.latitude);
+          var lng = parseFloat(response[i].location.longitude);
+          var aedPopup = ("<table><tr><td class='tableLeft'>Description</td><td class='tableRight'>" + desc + "</td></tr><tr><td class='tableLeft'>Expiration Date</td><td class='tableRight'>" + exp + "</td></tr></table>");
+          var aedMarker = L.marker([lat, lng]).bindPopup(aedPopup);
+          map.addLayer(aedMarker);
         }
       });
     }

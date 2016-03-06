@@ -21,7 +21,7 @@ function locationsRoute (app) {
 
 	})
 
-	app.post('/locations', [ photosHelper.uploadPhoto(), function(req, res){
+	app.post('/locations', global.upload.single('photo'), [ photosHelper.uploadPhoto(), function(req, res){
 
 		var location = req.body.location
 		var aedDescription = req.body.description
@@ -49,7 +49,7 @@ function locationsRoute (app) {
 
 	}])
 
-	app.put('/locations', function(req, res) {
+	app.post('/locations/:id/update', global.upload.single('photo'), [ photosHelper.uploadPhoto(), function(req, res) {
 		var aedDescription = req.body.description
 
 		aedDescriptions.updateDescription(aedDescription).then(function (descriptionResult) {
@@ -58,7 +58,7 @@ function locationsRoute (app) {
 		.catch(function (err) {
 			res.status(500).send(err)
 		})
-	})
+	}])
 
 }
 
