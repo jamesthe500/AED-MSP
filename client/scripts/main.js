@@ -83,12 +83,13 @@ aedLocatorApp.controller('AddViewController', ['$scope', '$location', 'aedApi', 
       var exp = document.getElementById('addUpdateDateInput').value;
       aed.description.expirationDate = exp;
       
+      console.log(aed);
       
       var fd = new FormData();
       fd.append('description[description]', aed.description.description);
-      fd.append('description[expirationDate]', aed.description.expriationDate);
+      fd.append('description[expirationDate]', aed.description.expirationDate);
       fd.append('location[latitude]', aed.location.latitude);
-      fd.append('location[longitude]', aed.location.description);
+      fd.append('location[longitude]', aed.location.longitude);
       
       console.log("Trying a POST!");
       aedApi.createAed(fd).then(function(response) {
@@ -125,7 +126,6 @@ aedLocatorApp.controller('AddViewController', ['$scope', '$location', 'aedApi', 
       map.addLayer(userMarker);
       map.addLayer(circle);
       
-      console.log(userLocation);
       aed.location.latitude = userLocation.lat;
       aed.location.longitude = userLocation.lng;
     }
