@@ -25,4 +25,6 @@ db.insert = function (query, values) {
 	})
 }
 
+db.update = db.insert
+
 module.exports = db

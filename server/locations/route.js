@@ -3,6 +3,7 @@
 var _ = require('lodash')
 var locations = require('./locations')
 var aedDescriptions = require('../aed-descriptions/aed-descriptions')
+var photosHelper = require('../aed-descriptions/photos-helper')
 
 function locationsRoute (app) {
 
@@ -20,7 +21,7 @@ function locationsRoute (app) {
 
 	})
 
-	app.post('/locations', function(req, res){
+	app.post('/locations', [ photosHelper.uploadPhoto(), function(req, res){
 
 		var location = req.body.location
 		var aedDescription = req.body.description
@@ -46,6 +47,17 @@ function locationsRoute (app) {
 			console.error(err)
 		})
 
+	}])
+
+	app.put('/locations', function(req, res) {
+		var aedDescription = req.body.description
+
+		aedDescriptions.updateDescription(aedDescription).then(function (descriptionResult) {
+			res.send({description: aedDescription})
+		})
+		.catch(function (err) {
+			res.status(500).send(err)
+		})
 	})
 
 }
