@@ -1,18 +1,19 @@
+<div ng-controller='AddViewController'>
+
 <!-- add aed locate page -->
 <div id='addView0' ng-show="addView0">
     <p id='addLocTitle' class='addViewTitle'>Please locate the AED</p>
-    <button ng-click="correctAedLocation(true)">Pin Placed! (& there's a close one)</button>
-    <button ng-click="correctAedLocation()">Pin Placed! (and there's not)</button>
-    <div id='addLocMap'>
+    <div id='addLocMap' class='addBody'></div>
+    <div class='addButtons'>
+        <div id='addLocButton0' class='addButton0' ng-click="changeView('/')">Cancel</div>
+        <div id='addLocButton1' class='addButton1' ng-click="switchView3()">Add AED</div>
     </div>
 </div>
 
 <!-- add aed confirmation page -->
 <div id='addView1' ng-show="addView1">
     <p id='addConTitle' class='addViewTitle'>Is this the AED you are locating?</p>
-    <button ng-click="thatWasTheSameAed()">Yes</button>
-    <button ng-click="thatWasNotTheSameAed()">No</button>
-    <div id='addConAed'>
+    <div id='addConAed' class='addBody'>
         <p id='addConDesc'></p>
         <div id='addConImg'>
         </div>
@@ -38,31 +39,40 @@
 
 <!-- add aed update photo page -->
 <div id='addView3' ng-show="addView3">
-    <p id='addUpdatePhotoText'>Take a photo</p>
-    <button ng-click="photoTaken()">Click!</button>
+    <p id='addUpdatePhotoText' class='addViewTitle'>Take a photo</p>
     <form id='addUpdatePhotoForm'>
         <input id='addUpdatePhotoInput' type="file" accept="image/*;capture=camera">
         <input type='submit' value='Submit Photo'>
     </form>
+    <div class='addButtons'>
+        <div class='addButton0' ng-click="switchViewCancel3()">Back</div>
+        <div class='addButton1' ng-click="switchView4()">Click!</div>
+    </div>
 </div>
 
 <!-- add aed update description page -->
 <div id='addView4' ng-show="addView4">
-    <p id='addUpdateDescText'>Add a description</p>
-    <!--<form id='addUpdateDescForm'>
+    <p id='addUpdateDescText' class='addViewTitle'>Add a description</p>
+    <form id='addUpdateDescForm'>
         Add a description
         <textarea id='addUpdateDescInput' rows='4' cols='1' placeholder='useful information about description here'></textarea>
         If visible, what is the expiration date?
         <input id='addUpdateDateInput' type='date'>
-        <input type='submit' value='Submit Description'>
-    </form>-->
-    <button ng-click="setAedDescription()">OK</button>
-
+    </form>
+    <div class='addButtons'>
+        <div class='addButton0' ng-click="switchViewCancel4()">Back</div>
+        <div class='addButton1' ng-click="switchView5()">Submit</div>
+    </div>
 </div>
 
 <!-- add aed thank you page -->
 <div id='addView5' ng-show="addView5">
     <p id='addThanks'>Thank you!</p>
-    <button ng-click="devStartOver()">start over (for testing)</button>
+    <div class='addButtons'>
+        <div class='addButton0' ng-click="changeView('/')">Home</div>
+        <div class='addButton1' ng-click="changeView('more-aed)">See More AEDs</div>
+    </div>
+
+</div>
 
 </div>
