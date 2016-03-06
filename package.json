@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha .",
     "start": "node server/main.js",
-		"prod": "grunt && node server/main.js"
+    "prod": "grunt && node server/main.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +26,7 @@
   },
   "devDependencies": {
     "chai": "3.5.0",
+    "grunt": "^0.4.5",
     "mocha": "2.4.5"
   }
 }
