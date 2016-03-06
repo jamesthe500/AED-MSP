@@ -9,7 +9,7 @@
     var api = {};
     
     api.queryAeds = function(lat, lon) {
-      return $http.get('/locations').then(function(response) {
+      return $http.get('/locations?lat=' + lat + "&long=" + lon).then(function(response) {
         return response.data
       });
     };
