@@ -17,6 +17,8 @@ function locationsRoute (app) {
 
 	})
 
+
+
 }
 
 module.exports = locationsRoute

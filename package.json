@@ -9,7 +9,7 @@
   "scripts": {
     "test": "mocha .",
     "start": "node --harmony server/main.js",
-    "prod": "grunt && node server/main.js"
+    "prod": "grunt && node --harmony server/main.js"
   },
   "repository": {
     "type": "git",
@@ -29,7 +29,7 @@
     "grunt-cli": "0.1.13",
     "grunt": "0.4.5",
     "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-uglify": "^1.0.0"
+    "grunt-contrib-uglify": "^1.1.0"
   },
   "devDependencies": {
     "chai": "3.5.0",
