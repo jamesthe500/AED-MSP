@@ -1,29 +1,17 @@
+'use strict'
 
-var mysql = require('mysql')
+let db = {}
 
-function connect () {
+db.query = function (query, callback) {
 
-	var connection = mysql.createConnection({
-		host: 'localhost',
-		user: 'root',
-		password: '',
-		database: 'AED'
+	return new Promise((resolve, reject) => {
+		global.connectionPool.query(query, (err, rows, fields) => {
+			if (err) return reject(err)
+
+			resolve({ rows, fields })
+		})
 	})
 
-	connection.connect()
-
-	return connection
-
 }
 
-function query (query, callback) {
-
-	var connection = connect()
-	connection.query(query, callback)
-	connection.end()
-
-}
-
-module.exports = {
-	query: query
-}
+module.exports = db

@@ -54,13 +54,5 @@ describe('.getBound()', () => {
 		})
 
 	})
-
-	context('given an empty object', () => {
-		it('should return an empty object', () => {
-			actual = latLong.getBound({})
-			
-			expect(actual).to.be.an.object
-			expect(actual).to.be.empty
-		})
-	})
+	
 })

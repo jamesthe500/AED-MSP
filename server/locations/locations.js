@@ -10,10 +10,7 @@ var locations = {}
 locations.getByLatLong = function (lat, long) {
 
 	return new Promise(function (resolve, reject) {
-		var bound = latLong.getBound({
-			lat: lat,
-			long: long
-		}, 1)
+		var bound = latLong.getBound({ lat, long }, 1)
 
 		var queryParts = [
 			"SELECT * FROM location",
@@ -25,11 +22,14 @@ locations.getByLatLong = function (lat, long) {
 
 		var query = queryParts.join(' ') + ';'
 
-		db.query(query, function (err, rows, fields) {
-			if (err) return reject(err)
-
-			resolve(rows)
-		})
+		db.query(query)
+			.then((data) => {
+				resolve(data.rows)
+			})
+			.catch((err) => {
+				console.error(err)
+				reject(err)
+			})
 	})
 
 }

@@ -1,9 +1,9 @@
 
 var locationsRoute = require('./locations/route')
 
-function route (app) {
+function route (app, pool) {
 
-	locationsRoute(app)
+	locationsRoute(app, pool)
 
 }
 

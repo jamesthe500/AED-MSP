@@ -1,8 +1,6 @@
 
 function getBound (latLong, factor) {
 
-	if (latLong === {})
-
 	var increment = .001
 
 	var x = increment * factor
