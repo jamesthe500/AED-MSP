@@ -82,15 +82,16 @@ body {
 
 #addLocMap {
 	width: 100%;
-	height: 300px;
+	height: 450px;
 }
 
 .addButtons {
 	width: 90%;
 	height: 3em;
 	position: absolute;
-	margin-left: auto;
-	/*margin-right: auto;*/
+	margin-top: 1em;
+	margin-left: 1em;
+	margin-right: auto;
 	z-index: 20;
 	bottom: 1em;
 }
@@ -120,3 +121,20 @@ body {
   	width: 45%;
 }
 
+#addUpdateDescContainer {
+	width: 90%;
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#addUpdateDescInput {
+	width: 100%;
+}
+
+#addUpdateDateInput {
+	width: 100%;
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+}

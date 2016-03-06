@@ -54,10 +54,13 @@
 <div id='addView4' ng-show="addView4">
     <p id='addUpdateDescText' class='addViewTitle'>Add a description</p>
     <form id='addUpdateDescForm'>
-        Add a description
-        <textarea ng-model='text' id='addUpdateDescInput' rows='4' cols='1' placeholder='useful information about description here'></textarea>
-        If visible, what is the expiration date?
-        <input id='addUpdateDateInput' type='date'>
+        <div id='addUpdateDescContainer'>
+            Add a description<br>
+            <textarea ng-model='text' id='addUpdateDescInput' rows='4' cols='1' placeholder='useful information about description here'></textarea>
+            <br>
+            If visible, what is the expiration date?<br>
+            <input id='addUpdateDateInput' type='date'>
+        </div>
     </form>
     <div class='addButtons'>
         <div class='addButton0' ng-click="switchViewCancel4()">Back</div>
