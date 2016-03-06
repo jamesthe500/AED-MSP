@@ -7,8 +7,8 @@
   },
   "main": "server/main.js",
   "scripts": {
-    "prod": "grunt && node --harmony server/main.js",
-    "start": "node --harmony server/main.js",
+    "prod": "grunt && pm2 start pm2.json",
+    "start": "grunt && pm2 start pm2.json",
     "test": "mocha ."
   },
   "repository": {
@@ -33,7 +33,9 @@
     "jquery": "^2.2.1",
     "leaflet": "^0.7.7",
     "lodash": "4.6.1",
-    "mysql": "2.10.2"
+    "moment": "2.11.2",
+    "mysql": "2.10.2",
+    "pm2": "^1.0.2"
   },
   "devDependencies": {
     "chai": "3.5.0",

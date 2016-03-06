@@ -1,7 +1,8 @@
 'use strict'
 
+var _ = require('lodash')
 var locations = require('./locations')
-var aedDescription = require('../aed-descriptions/aed-descriptions')
+var aedDescriptions = require('../aed-descriptions/aed-descriptions')
 
 function locationsRoute (app) {
 
@@ -22,10 +23,24 @@ function locationsRoute (app) {
 	app.post('/locations', function(req, res){
 
 		var location = req.body.location
+		var aedDescription = req.body.description
 
-		locations.createLocation(location).then(function (result) {
-			location.id = result.insertId
-			res.send(location)
+		locations.createLocation(location).then(function (locationResult) {
+			location.id = locationResult.insertId
+
+			if (_.isEmpty(aedDescription)) {
+				return res.send({ location })
+			}
+
+			aedDescription.locationId = location.id
+			aedDescriptions.createDescription(aedDescription)
+				.then(function (descriptionResult) {
+					aedDescription.id = descriptionResult.insertId
+					res.send({ location, description: aedDescription })
+				})
+				.catch(function (err) {
+					res.status(500).send(err)
+				})
 		})
 		.catch(function (err) {
 			console.error(err)

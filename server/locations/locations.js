@@ -42,12 +42,14 @@ locations.createLocation = function (location) {
 	var queryParts = [
 		"INSERT INTO location",
 		"(latitude, longitude)",
-		"VALUES (" + location.latitude + ", " + location.longitude + ")"
+		"VALUES (?, ?)"
 	]
 
 	var query = queryParts.join(' ') + ';'
 
-	db.insert(query)
+	var values = [ location.latitude, location.longitude ]
+
+	db.insert(query, values)
 		.then((data) => {
 			resolve(data)
 		})

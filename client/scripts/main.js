@@ -177,6 +177,12 @@ aedLocatorApp.controller('AddViewController', ['$scope', '$location', function($
     //     $scope.addView0 = !$scope.addView0;
     // };
 
+    // $scope.aedDescriptionData = function(){
+    //     $scope.newAedData.description.description = this.text;
+    //     $scope.newAedData.description.expirationDate = this.date;
+
+    //     console.log($scope.newAedData);
+    //     };
 
 
   
