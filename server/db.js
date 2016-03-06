@@ -14,15 +14,15 @@ db.query = function (query) {
 
 }
 
-db.insert = function (query) {
+db.insert = function (query, values) {
 
-		return new Promise((resolve, reject) => {
-			global.connectionPool.query(query, (err, result) => {
-				if (err) return reject(err)
+	return new Promise((resolve, reject) => {
+		global.connectionPool.query(query, values, (err, result) => {
+			if (err) return reject(err)
 
-				resolve(result)
-			})
+			resolve(result)
 		})
+	})
 }
 
 module.exports = db
