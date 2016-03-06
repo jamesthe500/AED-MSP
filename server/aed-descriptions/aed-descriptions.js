@@ -8,7 +8,7 @@ var aedDescriptions = {}
 aedDescriptions.createDescription = function (aedDescription) {
 
 	var expirationDate = _.has(aedDescription, 'expirationDate') ? aedDescription.expirationDate : ''
-	
+
 
 	return new Promise(function (resolve, reject) {
 		var queryParts = [
@@ -75,6 +75,27 @@ aedDescriptions.updateDescription = function (aedDescription){
 					reject(err)
 				})
 		})
+}
+
+aedDescriptions.getByLocationId = function (location) {
+	return new Promise(function (resolve, reject) {
+		var id = location.locationId
+
+		var queryParts = [
+			"SELECT * FROM description",
+			"WHERE locationId = " + id
+		]
+
+		var query = queryParts.join(' ') + ';'
+
+		db.query(query)
+			.then((data) => {
+				resolve(data.rows)
+			})
+			.catch((err) => {
+				reject(err)
+			})
+	})
 }
 
 module.exports = aedDescriptions

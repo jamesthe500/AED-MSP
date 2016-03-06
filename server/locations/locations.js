@@ -13,10 +13,11 @@ var locations = {}
 locations.getByLatLong = function (lat, long) {
 
 	return new Promise(function (resolve, reject) {
-		var bound = latLong.getBound({ lat, long }, 1)
+		var bound = latLong.getBound({ lat, long }, 10)
 
 		var queryParts = [
-			"SELECT * FROM location",
+			"SELECT * FROM location l",
+			"LEFT OUTER JOIN aed_description ad ON l.id = ad.locationid",
 			"WHERE latitude <= " + bound.latUpper,
 			"AND latitude >= " + bound.latLower,
 			"AND longitude >= " + bound.longLower,
