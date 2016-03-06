@@ -73,10 +73,14 @@ aedLocatorApp.controller('AddViewController', ['$scope', '$location', function($
     }
 
     $scope.switchView5 = function() {
+      $scope.addView4 = !$scope.addView4;
       $scope.addView5 = !$scope.addView5;
 
       var desc = document.getElementById('addUpdateDescInput').value;
-      aed.desc = desc
+      aed.desc = desc;
+      var exp = document.getElementById('addUpdateDateInput').value;
+      aed.exp = exp;
+      
       console.log(aed)
     }
 
