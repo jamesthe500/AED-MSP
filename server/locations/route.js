@@ -9,7 +9,7 @@ function locationsRoute (app) {
 		var long = parseFloat(req.query.long)
 
 		locations.getByLatLong(lat, long).then(function (rows) {
-				res.send({ devices: rows })
+				res.send({ locations: rows })
 			})
 			.catch(function (err) {
 				console.error(err)
