@@ -31,4 +31,8 @@ You'll also need a local copy of MySQL (we'll want to work on a method for this 
 
 After cloning this repository, install dependencies with `npm install`. Afterwards, to build the front end assets, make sure Grunt is installed globally (`npm i -g grunt`). Run `grunt` to build the static assets to `server/public`.
 
-Now, to start the application, run `npm start`.
+Install pm2 (a node process manager) globally with `npm i -g pm2`. This will allow your app to restart automatically when files are changed. Now, to start the application, run `npm start`.
+
+# Heroku
+
+To deploy the application, create an account on [heroku](http://heroku.com). Configure your ssh key in Account Settings.
