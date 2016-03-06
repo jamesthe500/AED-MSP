@@ -14,6 +14,4 @@ function getBound (latLong, factor) {
 
 }
 
-module.exports = {
-	getBound: getBound
-}
+module.exports = { getBound }

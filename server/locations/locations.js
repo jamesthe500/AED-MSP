@@ -5,7 +5,10 @@ var latLong = require('../lat-long')
 var locations = {}
 
 /**
- * TODO: documentation
+ * Query for a list of nearby locations
+ *
+ * @param {float} lat
+ * @param {float} long
  */
 locations.getByLatLong = function (lat, long) {
 
