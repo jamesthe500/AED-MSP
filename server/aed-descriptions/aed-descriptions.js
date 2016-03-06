@@ -8,7 +8,7 @@ var aedDescriptions = {}
 aedDescriptions.createDescription = function (aedDescription) {
 
 	var expirationDate = _.has(aedDescription, 'expirationDate') ? aedDescription.expirationDate : ''
-	aedDescription.filePath = 'some/file/path'
+	
 
 	return new Promise(function (resolve, reject) {
 		var queryParts = [
