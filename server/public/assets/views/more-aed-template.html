@@ -1,14 +1,9 @@
 <div ng-controller='MoreViewController'>
 
-	<div id='moreView0' ng-show='moreView0'>
+	<div id='moreView0' ng-click="changeView('/')">
+		<p id='moreViewTitle'>Find an AED Near You</p>
 		<div id='map'></div>
-		<div id='content'>
-			<table>
-				<tr><td class='tableLeft'>Description</td><td id='tableDesc' class='tableRight'></td></tr>
-				<tr><td class='tableLeft'>Expiration</td><td id='tableDesc' class='tableRight'></td></tr>
-				<tr><td class='tableLeft'>Photo</td><td id='tableDesc' class='tableRight'></td></tr>
-			</table>
-		</div>
+		<div id='backButton'>Back</div>
 	</div>
 
 
