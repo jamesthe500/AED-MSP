@@ -1,5 +1,8 @@
 
 function getBound (latLong, factor) {
+
+	if (latLong === {})
+
 	var increment = .001
 
 	var x = increment * factor
@@ -10,6 +13,7 @@ function getBound (latLong, factor) {
 		longUpper: latLong.long + x,
 		longLower: latLong.long - x
 	}
+
 }
 
 module.exports = {

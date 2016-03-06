@@ -4,8 +4,9 @@
   "description": "AED Location Tool",
   "main": "server/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server/main.js"
+    "test": "mocha .",
+    "start": "node server/main.js",
+		"prod": "grunt && node server/main.js"
   },
   "repository": {
     "type": "git",
@@ -22,5 +23,9 @@
     "jquery": "^2.2.1",
     "leaflet": "^0.7.7",
     "mysql": "2.10.2"
+  },
+  "devDependencies": {
+    "chai": "3.5.0",
+    "mocha": "2.4.5"
   }
 }
