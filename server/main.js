@@ -26,7 +26,7 @@ global.upload = upload
 let route = require('./route')
 route(app)
 
-app.use('/', express.static(path.resolve(__dirname + '/public')))
+app.use('/', express.static(path.resolve(__dirname + '/../public')))
 app.use('/locations/photos', express.static(path.resolve(__dirname + '/../uploads/photos')))
 
 app.listen(port, (err) => {

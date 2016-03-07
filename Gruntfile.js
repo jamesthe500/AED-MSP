@@ -17,7 +17,7 @@ module.exports = function(grunt){
                 src: [
                     "styles/*"
                 ],
-                "dest": "server/public/assets/"
+                "dest": "public/assets/"
             },
             images: {
                 expand: true,
@@ -25,7 +25,7 @@ module.exports = function(grunt){
                 src: [
                     "images/**"
                 ],
-                "dest": "server/public/assets/"
+                "dest": "public/assets/"
 
             },
             html: {
@@ -34,7 +34,7 @@ module.exports = function(grunt){
                 src: [
                     "views/*"
                 ],
-                "dest": "server/public/assets/"
+                "dest": "public/assets/"
 
             },
             index: {
@@ -43,7 +43,7 @@ module.exports = function(grunt){
                 src: [
                     "index.html"
                 ],
-                "dest": "server/public/"
+                "dest": "public/"
 
             },
             scripts: {
@@ -52,7 +52,7 @@ module.exports = function(grunt){
                 src: [
                     "scripts/*"
                 ],
-                "dest": "server/public/assets/"
+                "dest": "public/assets/"
             },
             angular: {
                 expand: true,
@@ -63,7 +63,7 @@ module.exports = function(grunt){
                     "angular/angular.min.js.map",
                     "angular/angular-csp.css"
                 ],
-                "dest": "server/public/vendors/"
+                "dest": "public/vendors/"
             }
         }
     });
