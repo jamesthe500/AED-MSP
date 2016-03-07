@@ -1,27 +1,6 @@
 # AED-MSP
-A tool for locating the nearest AED to your present location.
 
-# Git steps
-1. Create a branch for your changes
-    * git checkout -b branch_name
-2. How to merge in your changes from your_branch (starting with you on your branch)
-    * git add .
-    * git commit -m "Improves awesome"
-    * git push origin your_branch
-    * git pull origin master
-    * (here there might be conflicts. Fix them and start from the top, or continue if it says you're up to date if you get that annoying screen, write your message, hit esc, :wq enter)
-    * git status
-    * (if you're not ahead go back to git merge your_branch )
-    * git push origin your_branch
-    * git checkout master
-    * git merge your_branch
-    * git push origin master
-    * (the next line deletes locally)
-    * git branch -d your_branch
-    * (the next line deletes the remote version of the branch)
-    * git push origin :your_branch
-    * (lest your forget...)
-    * git checkout -b your_next_branch
+A tool for locating the nearest AED to your present location.
 
 # Local Development
 
@@ -29,14 +8,28 @@ To build a local copy of the application, you'll need a version of node installe
 
 You'll also need a local copy of MySQL (we'll want to work on a method for this setup to be automated). See the setup guide in `db/setup.md`.
 
-After cloning this repository, install dependencies with `npm install`. Afterwards, to build the front end assets, make sure Grunt is installed globally (`npm i -g grunt`). Run `grunt` to build the static assets to `server/public`.
-
-Install pm2 (a node process manager) globally with `npm i -g pm2`. This will allow your app to restart automatically when files are changed. Now, to start the application, run `npm start`.
+	$ npm install
+	$ npm i -g grunt pm2
+	$ npm start
 
 # Heroku
 
-To deploy the application, create an account on [heroku](http://heroku.com). Configure your ssh key in Account Settings.
+To deploy the application, create an account on [heroku](http://heroku.com). Configure your ssh key in Account Settings. You'll need to be added as a contributor on the application (contact Nick).
 
-Afterwards, add the heroku remote to your local git repo:
+Add a heroku remote:
 
 `git remote add heroku https://git.heroku.com/aqueous-castle-24316.git`
+
+Then push:
+
+`git push heroku master`
+
+# Roadmap
+
+Things to consider:
+
+- Where can we start to pull data from to have a starting point?
+- Clean up and write tests for everything in `server/`
+- Database migrations
+- Finish photo uploading
+- Stylistic improvements
